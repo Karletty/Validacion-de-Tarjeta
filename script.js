@@ -1,24 +1,36 @@
 const verifyButton = document.querySelector(".button-indication");
 const returnButton = document.querySelector(".return-button");
 const errorMessage = document.getElementById("error-message");
-
+const creditInput = document.querySelector(".creditnumber");
 verifyButton.addEventListener("click", function () {
     lenghtComprobant();
 });
-
-function onKeyUp(event) {
-    let keycode = event.keyCode;
-    if (keycode == '13') {
+creditInput.addEventListener("keypress",function (event){
+    let keycode=event.keyCode;
+    if (keycode === 13) {
         lenghtComprobant();
     }
-}
+    if (keycode !== 8) {
+        putHyphen();
+    }
+});
 returnButton.addEventListener("click", function () {
     changePage();
 });
 
+function putHyphen(){
+    let size = Array.from(creditInput.value);
+    size = size.length;
+    for (let i = 0; i < 20; i+=5) {
+       if (size === (i-1)) {
+            creditInput.value+="-"
+       }
+    }
+}
 function lenghtComprobant() {
     let userCreditNumber = document.querySelector(".creditnumber").value;
     userCreditNumber = userCreditNumber.trim();
+    userCreditNumber = userCreditNumber.replaceAll("-","");
     if (userCreditNumber.length === 0) {
         errorMessage.innerText = "You don't enter any digits, try again";
     } else {
@@ -71,7 +83,7 @@ function evalueNumber(transformedCreditNumber) {
         if ((i % 2) === 0) {
             newTransformedCreditNumber[i] = transformedCreditNumber[i] * 2;
         } else {
-            newTransformedCreditNumber[i] = transformedCreditNumber[i]
+            newTransformedCreditNumber[i] = transformedCreditNumber[i];
         }
     }
     for (let j = 0; j < 16; j++) {
@@ -83,8 +95,7 @@ function evalueNumber(transformedCreditNumber) {
         sumDigits = sumDigits + newTransformedCreditNumber[k];
 
     }
-    console.log(sumDigits)
-    changeImageText(sumDigits, transformedCreditNumber)
+    changeImageText(sumDigits, transformedCreditNumber);
 }
 
 function changePage() {
@@ -121,16 +132,13 @@ function changeImageText(sumDigits, transformedCreditNumber) {
     }
 
 }
-
+function cleanCreditNumber(){
+    creditInput.value="";
+}
 function hideNumber(transformedCreditNumber) {
     for (i = 0; i < 16; i++) {
         if (i < 12) {
             transformedCreditNumber[i] = "#";
         }
     }
-}
-
-function cleanCreditNumber(transformedCreditNumber) {
-    transformedCreditNumber = [];
-
 }
