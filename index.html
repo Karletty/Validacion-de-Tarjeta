@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VYCC</title>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="StyleSheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Asap&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="principal">
+            <img src="images/logo.png">
+            <h1 id="title">Verify Your Credit Card (VYCC)</h1>
+        </div>
+        <h3>Make all your payments safe</h3>
+    </header>
+    <main class="container">
+        <aside id="info">
+            <p>VYCC is made for you, for your trust, to make you feel safe,to check your credit card and made all the
+                payments you want to, in any moment you want </p>
+            <img src="images/cards.png" alt="credit cards" class="aside-img">
+        </aside>
+        <div id="check-verify">
+            <div class="check">
+                <h3>Let's verify your credit card!</h3>
+                <div class="input-container">
+                    <input type="text" class="creditnumber" maxlength="19" pattern="[0-9]" autocomplete="off"
+                        name="creditnumber" required onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                    <label for="creditnumbTer" class="label-credit">
+                        <span class="text-label">Credit Card Number</span>
+                    </label>
+                </div>
+                <div class="button-indication">
+                    <a href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Verify
+                    </a>
+                    <p id="error-message"></p>
+                </div>
+            </div>
+            <div class="verify hide">
+                <img src="images/false.png" alt="incorrect" class="verify-image">
+                <p id="verify-message"></p>
+                <a class="return-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Return
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js "></script>
+</body>
+
+</html>
